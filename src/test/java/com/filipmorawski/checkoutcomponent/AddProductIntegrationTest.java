@@ -34,9 +34,9 @@ public class AddProductIntegrationTest {
 		Product productToAdd = productList[0];
 		int quantityToAdd = 3;
 		
-		String s1 = "/api/carts/add/" + cart.getCartId() + "/"  
+		String s1 = "/api/carts/add/" + quantityToAdd + "/"  
 				+ productToAdd.getProductId() 
-				+ "/" + quantityToAdd;
+				+ "/" + cart.getCartId();
 		responseEntity = restTemplate.postForEntity(s1, null, Cart.class);
 		cart = responseEntity.getBody();
 		
@@ -46,9 +46,6 @@ public class AddProductIntegrationTest {
 		assertEquals(1, productsList.size());
 		assertEquals(productToAdd.getName(), productsList.get(0).getProduct().getName());
 		assertEquals(productToAdd.getProductId(), productsList.get(0).getProduct().getProductId());
-		assertEquals(quantityToAdd, productsList.get(0).getQuantity());
-
-
-		
+		assertEquals(quantityToAdd, productsList.get(0).getQuantity());	
 	}
 }

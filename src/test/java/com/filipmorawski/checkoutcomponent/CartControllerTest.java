@@ -122,7 +122,7 @@ public class CartControllerTest {
 
 		when(cartController.addProduct(cart.getCartId(), product.getProductId(), quantity)).thenReturn(re);
 
-		mockMvc	.perform(post("/api/carts/add/1/1/3").contentType(MediaType.APPLICATION_JSON))
+		mockMvc	.perform(post("/api/carts/add/3/1/1").contentType(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$.cartId", is(1)))
 				.andExpect(jsonPath("$.productsList[0].product.productId", is(1)))

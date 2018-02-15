@@ -33,9 +33,9 @@ public class CloseCartIntegrationTest {
 		Product productToAdd = productList[0];
 		int quantityToAdd = 8;
 		
-		String s1 = "/api/carts/add/" + cart.getCartId() + "/"  
+		String s1 = "/api/carts/add/" + quantityToAdd + "/"  
 				+ productToAdd.getProductId() 
-				+ "/" + quantityToAdd;
+				+ "/" + cart.getCartId();
 		responseEntity = restTemplate.postForEntity(s1, null, Cart.class);
 		cart = responseEntity.getBody();
 		

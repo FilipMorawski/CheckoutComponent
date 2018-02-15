@@ -70,11 +70,11 @@ public class CartController {
             @ApiResponse(code = 404, message = "The cart you were trying to update is not found")
     }
     )
-	@PostMapping(path="/carts/add/{cartId}/{productId}/{quant}")
+	@PostMapping(path="/carts/add/{quantity}/{productId}/{cartId}")
 	public ResponseEntity<Cart> addProduct(
 			@PathVariable(value="cartId") long cartId, 
 			@PathVariable(value="productId") long productId, 
-			@PathVariable(value="quant") int quantity) {
+			@PathVariable(value="quantity") int quantity) {
 		
 		Cart cart = cartRepository.findOne(cartId);
 		Product product = productRepository.findOne(productId);
@@ -104,12 +104,8 @@ public class CartController {
 		if(cart == null) {
 			return ResponseEntity.notFound().build();
 		}
-		Cart cart1 = new Cart();
-		cart1.setCartId(cart.getCartId());
-		cart1.setProductsList(cart.getProductsList());
-		cart1.setTotalCost(cart.getTotalCost());
 		cartRepository.delete(cartId);
-		cart1.setTotalCost(visitor.visit(cart1));
-		return ResponseEntity.ok(cart1);
+		cart.setTotalCost(visitor.visit(cart));
+		return ResponseEntity.ok(cart);
 	}	
 }
