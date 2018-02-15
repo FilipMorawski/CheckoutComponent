@@ -1,0 +1,4 @@
+INSERT INTO `checkoutcomponent`.`product` (`product_id`, `name`, `unit_cost`, `discount_units`, `special_price`) VALUES ('1',  'Headphones','40', '3', '70');
+INSERT INTO `checkoutcomponent`.`product` (`product_id`, `name`, `unit_cost`, `discount_units`, `special_price`) VALUES ('2', 'Powerbank', '10', '2', '15');
+INSERT INTO `checkoutcomponent`.`product` (`product_id`, `name`, `unit_cost`, `discount_units`, `special_price`) VALUES ('3', 'Pendrive', '30', '4', '60');
+INSERT INTO `checkoutcomponent`.`product` (`product_id`, `name`, `unit_cost`, `discount_units`, `special_price`) VALUES ('4', 'SDcard', '25', '2', '40');
