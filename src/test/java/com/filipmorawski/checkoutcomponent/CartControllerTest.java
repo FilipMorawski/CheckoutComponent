@@ -2,10 +2,8 @@ package com.filipmorawski.checkoutcomponent;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.mockito.Mockito.when;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.delete;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
-import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.put;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.jsonPath;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
@@ -47,19 +45,21 @@ public class CartControllerTest {
 	public void setup() {
 		cart = new Cart();
 		cart.setCartId(1);
+
 		product = new Product();
 		product.setName("Headphones");
-
 		product.setProductId(1);
 		product.setUnitCost(new BigDecimal(40));
 		product.setDiscountUnits(3);
 		product.setSpecialPrice(new BigDecimal(70));
+
 		int quantity = 3;
 		CartProduct cp = new CartProduct();
 		cp.setId(1);
 		cp.setProduct(product);
 		cp.setQuantity(quantity);
 		cp.setCartedPrice(new BigDecimal(120));
+
 		LinkedList<CartProduct> productsList = new LinkedList<CartProduct>();
 		productsList.add(cp);
 		cart.setProductsList(productsList);

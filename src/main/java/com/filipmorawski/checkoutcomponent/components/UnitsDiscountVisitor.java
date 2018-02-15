@@ -6,11 +6,9 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.filipmorawski.checkoutcomponent.interfaces.Visitor;
-import com.filipmorawski.checkoutcomponent.repositories.ProductRepository;
 
 @Service
 public class UnitsDiscountVisitor implements Visitor {

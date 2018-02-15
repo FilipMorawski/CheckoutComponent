@@ -1,12 +1,9 @@
 package com.filipmorawski.checkoutcomponent;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.junit.Assert.*;
-
 import java.math.BigDecimal;
 import java.util.LinkedList;
 
-import org.junit.Before;
 import org.junit.Test;
 
 import com.filipmorawski.checkoutcomponent.components.Cart;
@@ -14,7 +11,6 @@ import com.filipmorawski.checkoutcomponent.components.Product;
 import com.filipmorawski.checkoutcomponent.components.CartProduct;
 
 public class CartTest {
-
 
 	@Test
 	public void testAddProduct() {

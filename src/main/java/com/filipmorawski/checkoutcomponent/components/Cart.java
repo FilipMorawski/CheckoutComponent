@@ -10,8 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import org.hibernate.annotations.Cascade;
-
 import com.filipmorawski.checkoutcomponent.interfaces.Visitable;
 import com.filipmorawski.checkoutcomponent.interfaces.Visitor;
 
