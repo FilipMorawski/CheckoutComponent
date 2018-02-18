@@ -34,10 +34,10 @@ public class AddProductIntegrationTest {
 		Product productToAdd = productList[0];
 		int quantityToAdd = 3;
 		
-		String s1 = "/api/carts/add/" + quantityToAdd + "/"  
+		String firstRequest = "/api/carts/add/" + quantityToAdd + "/"  
 				+ productToAdd.getProductId() 
 				+ "/" + cart.getCartId();
-		responseEntity = restTemplate.postForEntity(s1, null, Cart.class);
+		responseEntity = restTemplate.postForEntity(firstRequest, null, Cart.class);
 		cart = responseEntity.getBody();
 		
 		List<CartProduct> productsList = cart.getProductsList();

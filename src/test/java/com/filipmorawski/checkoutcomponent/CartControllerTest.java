@@ -137,7 +137,7 @@ public class CartControllerTest {
 	public void closeCartTest() throws Exception {
 
 		UnitsDiscountVisitor visitor = new UnitsDiscountVisitor();
-		cart.setTotalCost(visitor.visit(cart));
+		visitor.visitShoppingCart(cart);
 		int quantity = cart	.getProductsList()
 							.get(0)
 							.getQuantity();
@@ -145,7 +145,7 @@ public class CartControllerTest {
 
 		when(cartController.closeCart(cart.getCartId())).thenReturn(re);
 
-		mockMvc	.perform(get("/api/carts/close/1").contentType(MediaType.APPLICATION_JSON))
+		mockMvc	.perform(post("/api/carts/close/1").contentType(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$.cartId", is(1)))
 				.andExpect(jsonPath("$.productsList[0].product.productId", is(1)))

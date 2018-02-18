@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="com.filipmorawski.checkoutcomponent.CartControllerTest" time="1.17" tests="4" errors="0" skipped="0" failures="0">
+<testsuite name="com.filipmorawski.checkoutcomponent.CartControllerTest" time="0.22" tests="4" errors="0" skipped="0" failures="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="sun.boot.library.path" value="C:\Program Files\Java\jdk1.8.0_131\jre\bin"/>
     <property name="java.vm.version" value="25.131-b11"/>
     <property name="java.vm.vendor" value="Oracle Corporation"/>
-    <property name="maven.multiModuleProjectDirectory" value="C:\Users\lenovo\Dysk Google\Programowanie\workspace JEE\CheckoutComponent"/>
+    <property name="maven.multiModuleProjectDirectory" value="C:\Users\lenovo\Documents\GitHub\CheckoutComponent"/>
     <property name="java.vendor.url" value="http://java.oracle.com/"/>
     <property name="path.separator" value=";"/>
     <property name="guice.disable.misplaced.annotation.check" value="true"/>
@@ -16,7 +16,7 @@
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.os.patch.level" value="Service Pack 1"/>
     <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
-    <property name="user.dir" value="C:\Users\lenovo\Dysk Google\Programowanie\workspace JEE\CheckoutComponent"/>
+    <property name="user.dir" value="C:\Users\lenovo\Documents\GitHub\CheckoutComponent"/>
     <property name="java.runtime.version" value="1.8.0_131-b11"/>
     <property name="java.awt.graphicsenv" value="sun.awt.Win32GraphicsEnvironment"/>
     <property name="java.endorsed.dirs" value="C:\Program Files\Java\jdk1.8.0_131\jre\lib\endorsed"/>
@@ -28,7 +28,7 @@
     <property name="os.name" value="Windows 7"/>
     <property name="classworlds.conf" value="C:\Program Files\apache-maven-3.5.2\bin\..\bin\m2.conf"/>
     <property name="sun.jnu.encoding" value="Cp1250"/>
-    <property name="java.library.path" value="C:\Program Files\Java\jdk1.8.0_131\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Program Files/Java/jre1.8.0_144/bin/client;C:/Program Files/Java/jre1.8.0_144/bin;C:/Program Files/Java/jre1.8.0_144/lib/i386;C:\ProgramData\Oracle\Java\javapath;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\QuickTime\QTSystem\;C:\Program Files\Windows Live\Shared;C:\Program Files\Java\jre1.8.0_131\lib\ext;C:\Program Files\Microsoft SQL Server\120\Tools\Bin\;C:\Program Files\Java\jdk1.8.0_131\bin\;C:\Program Files\ThinkPad\Bluetooth Software\;C:\Program Files\MySQL\MySQL Utilities 1.6\;C:\Program Files\apache-maven-3.5.2\bin\;C:\Windows\system32;;."/>
+    <property name="java.library.path" value="C:\Program Files\Java\jdk1.8.0_131\bin;C:\Windows\Sun\Java\bin;C:\Windows\system32;C:\Windows;C:/Program Files/Java/jre1.8.0_144/bin/client;C:/Program Files/Java/jre1.8.0_144/bin;C:/Program Files/Java/jre1.8.0_144/lib/i386;C:\ProgramData\Oracle\Java\javapath;C:\Program Files\Common Files\Microsoft Shared\Windows Live;C:\Windows\system32;C:\Windows;C:\Windows\System32\Wbem;C:\Windows\System32\WindowsPowerShell\v1.0\;C:\Program Files\QuickTime\QTSystem\;C:\Program Files\Windows Live\Shared;C:\Program Files\Java\jre1.8.0_131\lib\ext;C:\Program Files\Microsoft SQL Server\120\Tools\Bin\;C:\Program Files\Java\jdk1.8.0_131\bin\;C:\Program Files\ThinkPad\Bluetooth Software\;C:\Program Files\MySQL\MySQL Utilities 1.6\;C:\Program Files\apache-maven-3.5.2\bin\;C:\Program Files\Git\cmd;C:\Windows\system32;;."/>
     <property name="maven.conf" value="C:\Program Files\apache-maven-3.5.2\bin\../conf"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.class.version" value="52.0"/>
@@ -64,8 +64,8 @@
     <property name="sun.desktop" value="windows"/>
     <property name="sun.cpu.isalist" value="pentium_pro+mmx pentium_pro pentium+mmx pentium i486 i386 i86"/>
   </properties>
-  <testcase name="addProductTest" classname="com.filipmorawski.checkoutcomponent.CartControllerTest" time="1.067"/>
-  <testcase name="getAllTest" classname="com.filipmorawski.checkoutcomponent.CartControllerTest" time="0.011"/>
-  <testcase name="closeCartTest" classname="com.filipmorawski.checkoutcomponent.CartControllerTest" time="0.092"/>
-  <testcase name="createCart" classname="com.filipmorawski.checkoutcomponent.CartControllerTest" time="0"/>
+  <testcase name="addProductTest" classname="com.filipmorawski.checkoutcomponent.CartControllerTest" time="0.192"/>
+  <testcase name="getAllTest" classname="com.filipmorawski.checkoutcomponent.CartControllerTest" time="0.01"/>
+  <testcase name="closeCartTest" classname="com.filipmorawski.checkoutcomponent.CartControllerTest" time="0.009"/>
+  <testcase name="createCart" classname="com.filipmorawski.checkoutcomponent.CartControllerTest" time="0.009"/>
 </testsuite>

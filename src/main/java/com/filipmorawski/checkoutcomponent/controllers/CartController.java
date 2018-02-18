@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController;
 import com.filipmorawski.checkoutcomponent.components.Cart;
 import com.filipmorawski.checkoutcomponent.components.Product;
 import com.filipmorawski.checkoutcomponent.components.UnitsDiscountVisitor;
-import com.filipmorawski.checkoutcomponent.interfaces.Visitor;
 import com.filipmorawski.checkoutcomponent.repositories.CartRepository;
 import com.filipmorawski.checkoutcomponent.repositories.ProductRepository;
 
@@ -33,9 +32,6 @@ public class CartController {
 	
 	@Autowired
 	ProductRepository productRepository;
-	
-	@Autowired
-	Visitor visitor;
 	
 	@ApiOperation(value="View a list of opened shopping carts", response=List.class)
 	@ApiResponses(value = {
@@ -89,23 +85,22 @@ public class CartController {
 	
 	@ApiOperation(value="Close existing shopping cart and return final price", response=Cart.class)
 	@ApiResponses(value = {
-            @ApiResponse(code = 401, message = "You are not authorized to close the cart"),
+            @ApiResponse(code = 201, message = "Cart succesfully closed"),
+			@ApiResponse(code = 401, message = "You are not authorized to close the cart"),
             @ApiResponse(code = 403, message = "Accessing the cart you were trying to close is forbidden"),
             @ApiResponse(code = 404, message = "The cart you were trying to close is not found")
     }
     )
-	@GetMapping(path="/carts/close/{cartId}")
+	@PostMapping(path="/carts/close/{cartId}")
 	public ResponseEntity<Cart> closeCart(
 			@PathVariable(value="cartId") long cartId) {
-		
-		visitor = new UnitsDiscountVisitor();
-		
+				
 		Cart cart = cartRepository.findOne(cartId);
 		if(cart == null) {
 			return ResponseEntity.notFound().build();
 		}
 		cartRepository.delete(cartId);
-		cart.setTotalCost(visitor.visit(cart));
+		new UnitsDiscountVisitor().visitShoppingCart(cart);
 		return ResponseEntity.ok(cart);
 	}	
 }

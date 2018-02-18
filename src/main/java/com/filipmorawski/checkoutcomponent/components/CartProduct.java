@@ -11,12 +11,14 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
+import com.filipmorawski.checkoutcomponent.interfaces.OnlineShopElement;
+import com.filipmorawski.checkoutcomponent.interfaces.OnlineShopVisitor;
 
 import io.swagger.annotations.ApiModelProperty;
 
 @Entity
 @Table(name = "Cartedproducts")
-public class CartProduct {
+public class CartProduct implements OnlineShopElement {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -76,4 +78,7 @@ public class CartProduct {
 	public void setCartedPrice(BigDecimal cartedPrice) {
 		this.cartedPrice = cartedPrice;
 	}
+
+	@Override
+	public void accept(OnlineShopVisitor visitor) {}
 }

@@ -15,7 +15,7 @@ import com.filipmorawski.checkoutcomponent.components.UnitsDiscountVisitor;
 
 public class UnitsDiscountVisitorTest {
 	
-	private UnitsDiscountVisitor disVis;
+	private UnitsDiscountVisitor discountVisitor;
 	private Cart cart;
 
 	@Before
@@ -33,13 +33,14 @@ public class UnitsDiscountVisitorTest {
 		LinkedList<CartProduct> productsList = new LinkedList<CartProduct>();
 		productsList.add(cp);
 		cart.setProductsList(productsList);
-		disVis = new UnitsDiscountVisitor();
+		discountVisitor = new UnitsDiscountVisitor();
 	}
 
 	@Test
 	public void testVisit() {
 		BigDecimal expected = new BigDecimal(-100);	
-		assertEquals(expected, disVis.visit(cart));
+		discountVisitor.visitShoppingCart(cart);
+		assertEquals(expected, cart.getTotalCost());
 	}
 
 }

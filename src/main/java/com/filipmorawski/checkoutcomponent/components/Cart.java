@@ -10,13 +10,13 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.filipmorawski.checkoutcomponent.interfaces.Visitable;
-import com.filipmorawski.checkoutcomponent.interfaces.Visitor;
+import com.filipmorawski.checkoutcomponent.interfaces.OnlineShopElement;
+import com.filipmorawski.checkoutcomponent.interfaces.OnlineShopVisitor;
 
 import io.swagger.annotations.ApiModelProperty;
 
 @Entity
-public class Cart implements Visitable{
+public class Cart implements OnlineShopElement{
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
@@ -65,7 +65,7 @@ public class Cart implements Visitable{
 	}
 
 	@Override
-	public BigDecimal accept(Visitor visitor) {
-		return visitor.visit(this);
+	public  void accept(OnlineShopVisitor visitor) {
+		visitor.visitShoppingCart(this);
 	}	
 }

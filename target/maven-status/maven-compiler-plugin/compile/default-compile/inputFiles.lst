@@ -1,12 +1,12 @@
-C:\Users\lenovo\Dysk Google\Programowanie\workspace JEE\CheckoutComponent\src\main\java\com\filipmorawski\checkoutcomponent\repositories\ProductRepository.java
-C:\Users\lenovo\Dysk Google\Programowanie\workspace JEE\CheckoutComponent\src\main\java\com\filipmorawski\checkoutcomponent\interfaces\Visitor.java
-C:\Users\lenovo\Dysk Google\Programowanie\workspace JEE\CheckoutComponent\src\main\java\com\filipmorawski\checkoutcomponent\controllers\ProductController.java
-C:\Users\lenovo\Dysk Google\Programowanie\workspace JEE\CheckoutComponent\src\main\java\com\filipmorawski\checkoutcomponent\components\Product.java
-C:\Users\lenovo\Dysk Google\Programowanie\workspace JEE\CheckoutComponent\src\main\java\com\filipmorawski\checkoutcomponent\components\CartProduct.java
-C:\Users\lenovo\Dysk Google\Programowanie\workspace JEE\CheckoutComponent\src\main\java\com\filipmorawski\checkoutcomponent\interfaces\Visitable.java
-C:\Users\lenovo\Dysk Google\Programowanie\workspace JEE\CheckoutComponent\src\main\java\com\filipmorawski\checkoutcomponent\components\UnitsDiscountVisitor.java
-C:\Users\lenovo\Dysk Google\Programowanie\workspace JEE\CheckoutComponent\src\main\java\com\filipmorawski\checkoutcomponent\repositories\CartRepository.java
-C:\Users\lenovo\Dysk Google\Programowanie\workspace JEE\CheckoutComponent\src\main\java\com\filipmorawski\checkoutcomponent\components\Cart.java
-C:\Users\lenovo\Dysk Google\Programowanie\workspace JEE\CheckoutComponent\src\main\java\com\filipmorawski\checkoutcomponent\controllers\CartController.java
-C:\Users\lenovo\Dysk Google\Programowanie\workspace JEE\CheckoutComponent\src\main\java\com\filipmorawski\checkoutcomponent\CheckoutComponentApplication.java
-C:\Users\lenovo\Dysk Google\Programowanie\workspace JEE\CheckoutComponent\src\main\java\com\filipmorawski\checkoutcomponent\SwaggerConfig.java
+C:\Users\lenovo\Documents\GitHub\CheckoutComponent\src\main\java\com\filipmorawski\checkoutcomponent\interfaces\OnlineShopElement.java
+C:\Users\lenovo\Documents\GitHub\CheckoutComponent\src\main\java\com\filipmorawski\checkoutcomponent\SwaggerConfig.java
+C:\Users\lenovo\Documents\GitHub\CheckoutComponent\src\main\java\com\filipmorawski\checkoutcomponent\interfaces\OnlineShopVisitor.java
+C:\Users\lenovo\Documents\GitHub\CheckoutComponent\src\main\java\com\filipmorawski\checkoutcomponent\controllers\ProductController.java
+C:\Users\lenovo\Documents\GitHub\CheckoutComponent\src\main\java\com\filipmorawski\checkoutcomponent\repositories\ProductRepository.java
+C:\Users\lenovo\Documents\GitHub\CheckoutComponent\src\main\java\com\filipmorawski\checkoutcomponent\components\UnitsDiscountVisitor.java
+C:\Users\lenovo\Documents\GitHub\CheckoutComponent\src\main\java\com\filipmorawski\checkoutcomponent\controllers\CartController.java
+C:\Users\lenovo\Documents\GitHub\CheckoutComponent\src\main\java\com\filipmorawski\checkoutcomponent\repositories\CartRepository.java
+C:\Users\lenovo\Documents\GitHub\CheckoutComponent\src\main\java\com\filipmorawski\checkoutcomponent\CheckoutComponentApplication.java
+C:\Users\lenovo\Documents\GitHub\CheckoutComponent\src\main\java\com\filipmorawski\checkoutcomponent\components\Cart.java
+C:\Users\lenovo\Documents\GitHub\CheckoutComponent\src\main\java\com\filipmorawski\checkoutcomponent\components\CartProduct.java
+C:\Users\lenovo\Documents\GitHub\CheckoutComponent\src\main\java\com\filipmorawski\checkoutcomponent\components\Product.java

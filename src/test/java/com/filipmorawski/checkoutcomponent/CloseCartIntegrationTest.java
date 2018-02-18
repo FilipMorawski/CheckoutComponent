@@ -33,17 +33,18 @@ public class CloseCartIntegrationTest {
 		Product productToAdd = productList[0];
 		int quantityToAdd = 8;
 		
-		String s1 = "/api/carts/add/" + quantityToAdd + "/"  
+		String firstRequest = "/api/carts/add/" + quantityToAdd + "/"  
 				+ productToAdd.getProductId() 
 				+ "/" + cart.getCartId();
-		responseEntity = restTemplate.postForEntity(s1, null, Cart.class);
+		responseEntity = restTemplate.postForEntity(firstRequest, null, Cart.class);
 		cart = responseEntity.getBody();
 		
 		UnitsDiscountVisitor visitor = new UnitsDiscountVisitor();
-		BigDecimal costAfterDiscount = visitor.visit(cart);
+		visitor.visitShoppingCart(cart);
+		BigDecimal costAfterDiscount = cart.getTotalCost();
 		
-		String s2 = "/api/carts/close/" + cart.getCartId();
-		responseEntity = restTemplate.getForEntity(s2, Cart.class);
+		String secondRequest = "/api/carts/close/" + cart.getCartId();
+		responseEntity = restTemplate.postForEntity(secondRequest,null, Cart.class);
 		cart = responseEntity.getBody();
 
 		assertEquals(HttpStatus.OK, responseEntity.getStatusCode());

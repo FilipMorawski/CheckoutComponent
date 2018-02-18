@@ -8,13 +8,13 @@ import java.util.Set;
 
 import org.springframework.stereotype.Service;
 
-import com.filipmorawski.checkoutcomponent.interfaces.Visitor;
+import com.filipmorawski.checkoutcomponent.interfaces.OnlineShopVisitor;
 
 @Service
-public class UnitsDiscountVisitor implements Visitor {
+public class UnitsDiscountVisitor implements OnlineShopVisitor {
 	
 	@Override
-	public BigDecimal visit(Cart cart) {
+	public void visitShoppingCart(Cart cart) {
 		
 		Map<Long, Integer> productsCounter = mapProducts(cart);
 		Set<Long> productsSet = productsCounter.keySet();
@@ -31,9 +31,9 @@ public class UnitsDiscountVisitor implements Visitor {
 			if(discountCounter >= 1) {
 				discountCounter = Math.floor(discountCounter);
 				totalCost = totalCost.subtract(discount.multiply(new BigDecimal(discountCounter)));
+				cart.setTotalCost(totalCost);
 				}
 		}
-		return totalCost;
 	}
 
 	private Product getProduct(Cart cart, Long productId) {

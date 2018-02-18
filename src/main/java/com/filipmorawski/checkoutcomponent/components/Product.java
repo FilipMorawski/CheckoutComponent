@@ -11,10 +11,13 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.validator.constraints.NotBlank;
 
+import com.filipmorawski.checkoutcomponent.interfaces.OnlineShopElement;
+import com.filipmorawski.checkoutcomponent.interfaces.OnlineShopVisitor;
+
 import io.swagger.annotations.ApiModelProperty;
 
 @Entity
-public class Product {
+public class Product implements OnlineShopElement{
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -89,4 +92,6 @@ public class Product {
 		this.unitCost = unitCost;
 	}
 
+	@Override
+	public void accept(OnlineShopVisitor visitor) {}
 }
