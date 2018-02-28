@@ -1,4 +1,4 @@
-package com.filipmorawski.checkoutcomponent.interfaces;
+package com.filipmorawski.checkoutcomponent.discount;
 
 public interface OnlineShopElement {
 

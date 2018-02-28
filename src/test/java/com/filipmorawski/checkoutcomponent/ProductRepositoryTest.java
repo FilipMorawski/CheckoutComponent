@@ -15,8 +15,8 @@ import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.autoconfigure.orm.jpa.TestEntityManager;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import com.filipmorawski.checkoutcomponent.components.Product;
-import com.filipmorawski.checkoutcomponent.repositories.ProductRepository;
+import com.filipmorawski.checkoutcomponent.product.Product;
+import com.filipmorawski.checkoutcomponent.product.ProductRepository;
 
 
 @RunWith(SpringRunner.class)

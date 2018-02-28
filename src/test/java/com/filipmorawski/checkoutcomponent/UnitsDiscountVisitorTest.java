@@ -8,10 +8,10 @@ import java.util.LinkedList;
 import org.junit.Before;
 import org.junit.Test;
 
-import com.filipmorawski.checkoutcomponent.components.Cart;
-import com.filipmorawski.checkoutcomponent.components.CartProduct;
-import com.filipmorawski.checkoutcomponent.components.Product;
-import com.filipmorawski.checkoutcomponent.components.UnitsDiscountVisitor;
+import com.filipmorawski.checkoutcomponent.cart.Cart;
+import com.filipmorawski.checkoutcomponent.cart.CartProduct;
+import com.filipmorawski.checkoutcomponent.discount.UnitsDiscountVisitor;
+import com.filipmorawski.checkoutcomponent.product.Product;
 
 public class UnitsDiscountVisitorTest {
 	

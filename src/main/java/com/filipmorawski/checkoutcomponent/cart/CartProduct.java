@@ -1,4 +1,4 @@
-package com.filipmorawski.checkoutcomponent.components;
+package com.filipmorawski.checkoutcomponent.cart;
 
 import java.math.BigDecimal;
 
@@ -11,8 +11,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.filipmorawski.checkoutcomponent.interfaces.OnlineShopElement;
-import com.filipmorawski.checkoutcomponent.interfaces.OnlineShopVisitor;
+import com.filipmorawski.checkoutcomponent.discount.OnlineShopElement;
+import com.filipmorawski.checkoutcomponent.discount.OnlineShopVisitor;
+import com.filipmorawski.checkoutcomponent.product.Product;
 
 import io.swagger.annotations.ApiModelProperty;
 

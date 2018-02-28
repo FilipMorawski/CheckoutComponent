@@ -20,11 +20,12 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
-import com.filipmorawski.checkoutcomponent.components.Cart;
-import com.filipmorawski.checkoutcomponent.components.CartProduct;
-import com.filipmorawski.checkoutcomponent.components.Product;
-import com.filipmorawski.checkoutcomponent.components.UnitsDiscountVisitor;
-import com.filipmorawski.checkoutcomponent.controllers.CartController;
+
+import com.filipmorawski.checkoutcomponent.cart.Cart;
+import com.filipmorawski.checkoutcomponent.cart.CartController;
+import com.filipmorawski.checkoutcomponent.cart.CartProduct;
+import com.filipmorawski.checkoutcomponent.discount.UnitsDiscountVisitor;
+import com.filipmorawski.checkoutcomponent.product.Product;
 
 @RunWith(SpringRunner.class)
 @AutoConfigureMockMvc

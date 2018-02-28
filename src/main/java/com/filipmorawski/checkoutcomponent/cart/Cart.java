@@ -1,4 +1,4 @@
-package com.filipmorawski.checkoutcomponent.components;
+package com.filipmorawski.checkoutcomponent.cart;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -10,8 +10,9 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.filipmorawski.checkoutcomponent.interfaces.OnlineShopElement;
-import com.filipmorawski.checkoutcomponent.interfaces.OnlineShopVisitor;
+import com.filipmorawski.checkoutcomponent.discount.OnlineShopElement;
+import com.filipmorawski.checkoutcomponent.discount.OnlineShopVisitor;
+import com.filipmorawski.checkoutcomponent.product.Product;
 
 import io.swagger.annotations.ApiModelProperty;
 

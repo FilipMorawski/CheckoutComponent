@@ -1,4 +1,4 @@
-package com.filipmorawski.checkoutcomponent.components;
+package com.filipmorawski.checkoutcomponent.discount;
 
 import java.math.BigDecimal;
 import java.util.HashMap;
@@ -8,7 +8,9 @@ import java.util.Set;
 
 import org.springframework.stereotype.Service;
 
-import com.filipmorawski.checkoutcomponent.interfaces.OnlineShopVisitor;
+import com.filipmorawski.checkoutcomponent.cart.Cart;
+import com.filipmorawski.checkoutcomponent.cart.CartProduct;
+import com.filipmorawski.checkoutcomponent.product.Product;
 
 @Service
 public class UnitsDiscountVisitor implements OnlineShopVisitor {

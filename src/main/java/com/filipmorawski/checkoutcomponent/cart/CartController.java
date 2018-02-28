@@ -1,4 +1,4 @@
-package com.filipmorawski.checkoutcomponent.controllers;
+package com.filipmorawski.checkoutcomponent.cart;
 
 import java.util.List;
 
@@ -11,11 +11,9 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.filipmorawski.checkoutcomponent.components.Cart;
-import com.filipmorawski.checkoutcomponent.components.Product;
-import com.filipmorawski.checkoutcomponent.components.UnitsDiscountVisitor;
-import com.filipmorawski.checkoutcomponent.repositories.CartRepository;
-import com.filipmorawski.checkoutcomponent.repositories.ProductRepository;
+import com.filipmorawski.checkoutcomponent.discount.UnitsDiscountVisitor;
+import com.filipmorawski.checkoutcomponent.product.Product;
+import com.filipmorawski.checkoutcomponent.product.ProductRepository;
 
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;

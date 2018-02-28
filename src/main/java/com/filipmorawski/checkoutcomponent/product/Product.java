@@ -1,4 +1,4 @@
-package com.filipmorawski.checkoutcomponent.components;
+package com.filipmorawski.checkoutcomponent.product;
 
 import java.math.BigDecimal;
 
@@ -11,8 +11,8 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.validator.constraints.NotBlank;
 
-import com.filipmorawski.checkoutcomponent.interfaces.OnlineShopElement;
-import com.filipmorawski.checkoutcomponent.interfaces.OnlineShopVisitor;
+import com.filipmorawski.checkoutcomponent.discount.OnlineShopElement;
+import com.filipmorawski.checkoutcomponent.discount.OnlineShopVisitor;
 
 import io.swagger.annotations.ApiModelProperty;
 
