@@ -51,7 +51,7 @@ public class CartController {
             @ApiResponse(code = 404, message = "The cart you were trying to reach is not found")
     }
     )
-	@PostMapping(path="/carts/create")
+	@PostMapping(path="/carts")
 	public Cart createCart() {
 		return cartRepository.save(new Cart());
 	}
@@ -64,7 +64,7 @@ public class CartController {
             @ApiResponse(code = 404, message = "The cart you were trying to update is not found")
     }
     )
-	@PostMapping(path="/carts/add/{quantity}/{productId}/{cartId}")
+	@PostMapping(path="/carts/{cartId}/add/{quantity}/{productId}")
 	public ResponseEntity<Cart> addProduct(
 			@PathVariable(value="cartId") long cartId, 
 			@PathVariable(value="productId") long productId, 
@@ -89,7 +89,7 @@ public class CartController {
             @ApiResponse(code = 404, message = "The cart you were trying to close is not found")
     }
     )
-	@PostMapping(path="/carts/close/{cartId}")
+	@PostMapping(path="/carts/{cartId}/close")
 	public ResponseEntity<Cart> closeCart(
 			@PathVariable(value="cartId") long cartId) {
 				

@@ -1,4 +1,4 @@
-package com.filipmorawski.checkoutcomponent;
+package com.filipmorawski.checkoutcomponent.test.integration;
 
 import static org.junit.Assert.assertEquals;
 
@@ -24,8 +24,8 @@ public class CloseCartIntegrationTest {
 	private TestRestTemplate restTemplate;
 	
 	@Test
-	public void closeCart() {
-		ResponseEntity<Cart> responseEntity = restTemplate.postForEntity("/api/carts/create",null, Cart.class);
+	public void closeCartTest() {
+		ResponseEntity<Cart> responseEntity = restTemplate.postForEntity("/api/carts",null, Cart.class);
 		Cart cart = responseEntity.getBody();
 
 		Product[] productList = restTemplate.getForObject("/api/products", Product[].class);
@@ -33,9 +33,8 @@ public class CloseCartIntegrationTest {
 		Product productToAdd = productList[0];
 		int quantityToAdd = 8;
 		
-		String firstRequest = "/api/carts/add/" + quantityToAdd + "/"  
-				+ productToAdd.getProductId() 
-				+ "/" + cart.getCartId();
+		String firstRequest = "/api/carts/" + cart.getCartId() +"/add/" + quantityToAdd + "/"  
+				+ productToAdd.getProductId();
 		responseEntity = restTemplate.postForEntity(firstRequest, null, Cart.class);
 		cart = responseEntity.getBody();
 		
@@ -43,7 +42,7 @@ public class CloseCartIntegrationTest {
 		visitor.visitShoppingCart(cart);
 		BigDecimal costAfterDiscount = cart.getTotalCost();
 		
-		String secondRequest = "/api/carts/close/" + cart.getCartId();
+		String secondRequest = "/api/carts/" + cart.getCartId() +"/close/";
 		responseEntity = restTemplate.postForEntity(secondRequest,null, Cart.class);
 		cart = responseEntity.getBody();
 

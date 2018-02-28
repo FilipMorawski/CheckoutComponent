@@ -1,4 +1,4 @@
-package com.filipmorawski.checkoutcomponent;
+package com.filipmorawski.checkoutcomponent.test.integration;
 
 import static org.junit.Assert.assertEquals;
 
@@ -23,8 +23,8 @@ public class CreateCartIntegrationTest {
 	private TestRestTemplate restTemplate;
 	
 	@Test
-	public void createCart() {
-		ResponseEntity<Cart> responseEntity = restTemplate.postForEntity("/api/carts/create", null, Cart.class);
+	public void createCartTest() {
+		ResponseEntity<Cart> responseEntity = restTemplate.postForEntity("/api/carts", null, Cart.class);
 		Cart cart = responseEntity.getBody();
 		
 		assertEquals(HttpStatus.OK, responseEntity.getStatusCode());

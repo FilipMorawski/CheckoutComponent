@@ -1,4 +1,4 @@
-package com.filipmorawski.checkoutcomponent;
+package com.filipmorawski.checkoutcomponent.test.unit;
 
 import static org.junit.Assert.*;
 
@@ -37,7 +37,7 @@ public class UnitsDiscountVisitorTest {
 	}
 
 	@Test
-	public void testVisit() {
+	public void whenVisit_shouldReturnCartWithCostAfterDiscount() {
 		BigDecimal expected = new BigDecimal(-100);	
 		discountVisitor.visitShoppingCart(cart);
 		assertEquals(expected, cart.getTotalCost());

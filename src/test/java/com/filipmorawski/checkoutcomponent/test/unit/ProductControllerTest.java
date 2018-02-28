@@ -1,4 +1,4 @@
-package com.filipmorawski.checkoutcomponent;
+package com.filipmorawski.checkoutcomponent.test.unit;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.mockito.Mockito.when;
@@ -34,7 +34,7 @@ public class ProductControllerTest {
 	private ProductController productController;
 
 	@Test
-	public void getAllTest() throws Exception{
+	public void whenGetListOfAllProducts_ShouldReturnProductListOfSize2() throws Exception{
 		Product product = new Product("Headphones", new BigDecimal(40), 3, new BigDecimal(70));
 		Product product2 = new Product("USBDrive", new BigDecimal(10), 2, new BigDecimal(15));
 		

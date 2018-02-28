@@ -1,4 +1,4 @@
-package com.filipmorawski.checkoutcomponent.common;
+package com.filipmorawski.checkoutcomponent;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

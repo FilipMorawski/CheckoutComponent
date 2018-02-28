@@ -1,4 +1,4 @@
-package com.filipmorawski.checkoutcomponent;
+package com.filipmorawski.checkoutcomponent.test.integration;
 
 import static org.junit.Assert.assertEquals;
 
@@ -11,6 +11,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.filipmorawski.checkoutcomponent.cart.Cart;
@@ -19,14 +20,15 @@ import com.filipmorawski.checkoutcomponent.product.Product;
 
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
+
 public class AddProductIntegrationTest {
 	
 	@Autowired
 	private TestRestTemplate restTemplate;
 	
 	@Test
-	public void addProduct() {
-		ResponseEntity<Cart> responseEntity = restTemplate.postForEntity("/api/carts/create",null, Cart.class);
+	public void addProductTest() {
+		ResponseEntity<Cart> responseEntity = restTemplate.postForEntity("/api/carts",null, Cart.class);
 		Cart cart = responseEntity.getBody();
 		
 		Product[] productList = restTemplate.getForObject("/api/products", Product[].class);
@@ -34,9 +36,8 @@ public class AddProductIntegrationTest {
 		Product productToAdd = productList[0];
 		int quantityToAdd = 3;
 		
-		String firstRequest = "/api/carts/add/" + quantityToAdd + "/"  
-				+ productToAdd.getProductId() 
-				+ "/" + cart.getCartId();
+		String firstRequest = "/api/carts/" + cart.getCartId() +"/add/" + quantityToAdd + "/"  
+				+ productToAdd.getProductId();
 		responseEntity = restTemplate.postForEntity(firstRequest, null, Cart.class);
 		cart = responseEntity.getBody();
 		

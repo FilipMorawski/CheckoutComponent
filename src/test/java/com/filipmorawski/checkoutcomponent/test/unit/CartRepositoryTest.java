@@ -1,4 +1,4 @@
-package com.filipmorawski.checkoutcomponent;
+package com.filipmorawski.checkoutcomponent.test.unit;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
@@ -50,7 +50,7 @@ public class CartRepositoryTest {
 	}
 	
 	@Test
-	public void whenFindById() {
+	public void whenFindById_shouldReturnCartWithSpecificCost() {
 
 		//when
 		Cart findedCart = cartRepository.findOne(cart2.getCartId());
@@ -62,7 +62,7 @@ public class CartRepositoryTest {
 	}
 
 	@Test
-	public void whenFindAll() {
+	public void whenFindAll_shouldReturnTwoCarts() {
 		
 		//when
 		List<Cart> carts = cartRepository.findAll();
@@ -74,7 +74,7 @@ public class CartRepositoryTest {
 	}
 
 	@Test
-	public void whenUpdate() {
+	public void whenUpdate_shouldReturnCartThatCosts50() {
 		cart.setTotalCost(new BigDecimal(50));
 		Cart updatedCart = cartRepository.save(cart);
 		
@@ -84,7 +84,7 @@ public class CartRepositoryTest {
 	}
 	
 	@Test
-	public void whenRemove() {
+	public void whenRemove_shouldCartListContainsOne() {
 		cartRepository.delete(cart);
 		
 		Cart removedCart = cartRepository.findOne(cart.getCartId());		

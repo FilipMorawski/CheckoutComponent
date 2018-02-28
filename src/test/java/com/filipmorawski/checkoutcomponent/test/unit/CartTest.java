@@ -1,4 +1,4 @@
-package com.filipmorawski.checkoutcomponent;
+package com.filipmorawski.checkoutcomponent.test.unit;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import java.math.BigDecimal;
@@ -13,7 +13,7 @@ import com.filipmorawski.checkoutcomponent.product.Product;
 public class CartTest {
 
 	@Test
-	public void testAddProduct() {
+	public void whenAddProduct_shouldReturnCartWithSpecificCost() {
 		Product product = new Product();
 		Cart cart = new Cart();
 		

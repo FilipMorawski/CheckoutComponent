@@ -1,4 +1,4 @@
-package com.filipmorawski.checkoutcomponent;
+package com.filipmorawski.checkoutcomponent.test.unit;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.mockito.Mockito.when;
@@ -68,7 +68,7 @@ public class CartControllerTest {
 	}
 
 	@Test
-	public void createCart() throws Exception {
+	public void whenCreateCart_shouldReturnCartWithId1() throws Exception {
 
 		Cart createdCart = new Cart();
 		createdCart.setCartId(1);
@@ -76,7 +76,7 @@ public class CartControllerTest {
 
 		when(cartController.createCart()).thenReturn(createdCart);
 
-		mockMvc	.perform(post("/api/carts/create").contentType(MediaType.APPLICATION_JSON))
+		mockMvc	.perform(post("/api/carts").contentType(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$.cartId", is(1)))
 				.andExpect(jsonPath("$.productsList", is(createdCart.getProductsList())))
@@ -84,7 +84,7 @@ public class CartControllerTest {
 	}
 
 	@Test
-	public void getAllTest() throws Exception {
+	public void whenGetAllCarts_shouldReturnCartListOfSize2() throws Exception {
 
 		int quantity = cart	.getProductsList()
 							.get(0)
@@ -114,7 +114,7 @@ public class CartControllerTest {
 	}
 
 	@Test
-	public void addProductTest() throws Exception {
+	public void whenAddProduct_shouldReturnCartWithProduct() throws Exception {
 
 		ResponseEntity<Cart> re = ResponseEntity.ok(cart);
 		int quantity = cart	.getProductsList()
@@ -123,7 +123,7 @@ public class CartControllerTest {
 
 		when(cartController.addProduct(cart.getCartId(), product.getProductId(), quantity)).thenReturn(re);
 
-		mockMvc	.perform(post("/api/carts/add/3/1/1").contentType(MediaType.APPLICATION_JSON))
+		mockMvc	.perform(post("/api/carts/1/add/3/1").contentType(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$.cartId", is(1)))
 				.andExpect(jsonPath("$.productsList[0].product.productId", is(1)))
@@ -135,7 +135,7 @@ public class CartControllerTest {
 	}
 
 	@Test
-	public void closeCartTest() throws Exception {
+	public void whenCloseCart_shouldReturnClosedCart() throws Exception {
 
 		UnitsDiscountVisitor visitor = new UnitsDiscountVisitor();
 		visitor.visitShoppingCart(cart);
@@ -146,7 +146,7 @@ public class CartControllerTest {
 
 		when(cartController.closeCart(cart.getCartId())).thenReturn(re);
 
-		mockMvc	.perform(post("/api/carts/close/1").contentType(MediaType.APPLICATION_JSON))
+		mockMvc	.perform(post("/api/carts/1/close").contentType(MediaType.APPLICATION_JSON))
 				.andExpect(status().isOk())
 				.andExpect(jsonPath("$.cartId", is(1)))
 				.andExpect(jsonPath("$.productsList[0].product.productId", is(1)))

@@ -17,7 +17,8 @@ public class SwaggerConfig {
 	@Bean
 	public Docket checkoutComponentApi() {
 		return new Docket(DocumentationType.SWAGGER_2)
-				.select().apis(RequestHandlerSelectors.basePackage("com.filipmorawski.checkoutcomponent.controllers"))
+				.select()
+				.apis(RequestHandlerSelectors.basePackage("com.filipmorawski.checkoutcomponent"))
 				.build()
 				.apiInfo(metaData());
 				

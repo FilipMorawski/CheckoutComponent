@@ -1,4 +1,4 @@
-package com.filipmorawski.checkoutcomponent;
+package com.filipmorawski.checkoutcomponent.test.unit;
 
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.boot.test.autoconfigure.jdbc.AutoConfigureTestDatabase.Replace.NONE;
@@ -46,7 +46,7 @@ public class ProductRepositoryTest {
 	}
 	
 	@Test
-	public void whenFindById() {
+	public void whenFindById_shouldReturnProductsWithSpecificNameAndCost() {
 
 		//when
 		Product findedProduct1 = productRepository.findOne(product1.getProductId());
@@ -61,7 +61,7 @@ public class ProductRepositoryTest {
 	}
 
 	@Test
-	public void whenFindAll() {
+	public void whenFindAll_shouldReturnProductsListOfSize2() {
 		
 		//when
 		List<Product> products = productRepository.findAll();
