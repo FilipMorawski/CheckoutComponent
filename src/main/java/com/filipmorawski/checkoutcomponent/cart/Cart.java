@@ -10,27 +10,18 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
-import com.filipmorawski.checkoutcomponent.discount.OnlineShopElement;
-import com.filipmorawski.checkoutcomponent.discount.OnlineShopVisitor;
-import com.filipmorawski.checkoutcomponent.product.Product;
-
-import io.swagger.annotations.ApiModelProperty;
-
 @Entity
-public class Cart implements OnlineShopElement{
+public class Cart {
 
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	@ApiModelProperty(notes="Database generated cart ID")
 	private long cartId;
 
 	@OneToMany(cascade=CascadeType.ALL)
-	@ApiModelProperty(notes="List of products in cart")
 	private List<CartProduct> productsList;
 
-	@ApiModelProperty(notes="Total cost of all products stored in cart")
 	private BigDecimal totalCost = new BigDecimal(0);
-
+	
 	public long getCartId() {
 		return cartId;
 	}
@@ -54,19 +45,4 @@ public class Cart implements OnlineShopElement{
 	public void setTotalCost(BigDecimal totalCost) {
 		this.totalCost = totalCost;
 	}
-
-	public void addProduct(Product product, int quantity) {
-		CartProduct cp = new CartProduct(product, quantity);
-		productsList.add(cp);
-		totalCost = totalCost.add(cp.getCartedPrice());
-	}
-	public void addProduct(CartProduct cp) {
-		productsList.add(cp);
-		totalCost = totalCost.add(cp.getCartedPrice());
-	}
-
-	@Override
-	public  void accept(OnlineShopVisitor visitor) {
-		visitor.visitShoppingCart(this);
-	}	
 }

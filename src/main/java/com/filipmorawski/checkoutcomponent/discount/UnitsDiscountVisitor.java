@@ -8,7 +8,7 @@ import java.util.Set;
 
 import org.springframework.stereotype.Service;
 
-import com.filipmorawski.checkoutcomponent.cart.Cart;
+import com.filipmorawski.checkoutcomponent.cart.CartDTO;
 import com.filipmorawski.checkoutcomponent.cart.CartProduct;
 import com.filipmorawski.checkoutcomponent.product.Product;
 
@@ -16,7 +16,7 @@ import com.filipmorawski.checkoutcomponent.product.Product;
 public class UnitsDiscountVisitor implements OnlineShopVisitor {
 	
 	@Override
-	public void visitShoppingCart(Cart cart) {
+	public void visitShoppingCart(CartDTO cart) {
 		
 		Map<Long, Integer> productsCounter = mapProducts(cart);
 		Set<Long> productsSet = productsCounter.keySet();
@@ -38,7 +38,7 @@ public class UnitsDiscountVisitor implements OnlineShopVisitor {
 		}
 	}
 
-	private Product getProduct(Cart cart, Long productId) {
+	private Product getProduct(CartDTO cart, Long productId) {
 
 		List<CartProduct> productsList = cart.getProductsList();
 		for (CartProduct cp : productsList) {
@@ -49,7 +49,7 @@ public class UnitsDiscountVisitor implements OnlineShopVisitor {
 		return null;
 	}
 
-	private Map<Long, Integer> mapProducts(Cart cart) {
+	private Map<Long, Integer> mapProducts(CartDTO cart) {
 		Map<Long, Integer> productsCounter = new HashMap<Long, Integer>();
 		for (CartProduct cp : cart.getProductsList()) {
 			long productId =  cp.getProduct().getProductId();

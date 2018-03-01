@@ -9,6 +9,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 import java.math.BigDecimal;
 import java.util.LinkedList;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -21,8 +22,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 import org.springframework.test.web.servlet.MockMvc;
 
-import com.filipmorawski.checkoutcomponent.cart.Cart;
 import com.filipmorawski.checkoutcomponent.cart.CartController;
+import com.filipmorawski.checkoutcomponent.cart.CartDTO;
 import com.filipmorawski.checkoutcomponent.cart.CartProduct;
 import com.filipmorawski.checkoutcomponent.discount.UnitsDiscountVisitor;
 import com.filipmorawski.checkoutcomponent.product.Product;
@@ -38,21 +39,16 @@ public class CartControllerTest {
 	@MockBean
 	private CartController cartController;
 
-	private Cart cart;
+	private CartDTO cart;
 
 	private Product product;
 
 	@Before
 	public void setup() {
-		cart = new Cart();
+		cart = new CartDTO();
 		cart.setCartId(1);
 
-		product = new Product();
-		product.setName("Headphones");
-		product.setProductId(1);
-		product.setUnitCost(new BigDecimal(40));
-		product.setDiscountUnits(3);
-		product.setSpecialPrice(new BigDecimal(70));
+		product = new Product(1,"Headphones", new BigDecimal(40), 3, new BigDecimal(70));
 
 		int quantity = 3;
 		CartProduct cp = new CartProduct();
@@ -70,7 +66,7 @@ public class CartControllerTest {
 	@Test
 	public void whenCreateCart_shouldReturnCartWithId1() throws Exception {
 
-		Cart createdCart = new Cart();
+		CartDTO createdCart = new CartDTO();
 		createdCart.setCartId(1);
 		createdCart.setTotalCost(new BigDecimal(15));
 
@@ -90,12 +86,12 @@ public class CartControllerTest {
 							.get(0)
 							.getQuantity();
 
-		Cart cart2 = new Cart();
-		cart2.setCartId(2);
+		CartDTO secondCart = new CartDTO();
+		secondCart.setCartId(2);
 
-		LinkedList<Cart> cartList = new LinkedList<Cart>();
+		LinkedList<CartDTO> cartList = new LinkedList<CartDTO>();
 		cartList.add(cart);
-		cartList.add(cart2);
+		cartList.add(secondCart);
 
 		when(cartController.getAll()).thenReturn(cartList);
 
@@ -109,14 +105,14 @@ public class CartControllerTest {
 				.andExpect(jsonPath("$[0].productsList[0].quantity", is(quantity)))
 				.andExpect(jsonPath("$[0].totalCost", is(120)))
 				.andExpect(jsonPath("$[1].cartId", is(2)))
-				.andExpect(jsonPath("$[1].productsList", is(cart2.getProductsList())))
+				.andExpect(jsonPath("$[1].productsList", is(secondCart.getProductsList())))
 				.andExpect(jsonPath("$[1].totalCost", is(0)));
 	}
 
 	@Test
 	public void whenAddProduct_shouldReturnCartWithProduct() throws Exception {
 
-		ResponseEntity<Cart> re = ResponseEntity.ok(cart);
+		ResponseEntity<CartDTO> re = ResponseEntity.ok(cart);
 		int quantity = cart	.getProductsList()
 							.get(0)
 							.getQuantity();
@@ -142,7 +138,7 @@ public class CartControllerTest {
 		int quantity = cart	.getProductsList()
 							.get(0)
 							.getQuantity();
-		ResponseEntity<Cart> re = ResponseEntity.ok(cart);
+		ResponseEntity<CartDTO> re = ResponseEntity.ok(cart);
 
 		when(cartController.closeCart(cart.getCartId())).thenReturn(re);
 

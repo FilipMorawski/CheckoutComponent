@@ -6,7 +6,7 @@ import java.util.LinkedList;
 
 import org.junit.Test;
 
-import com.filipmorawski.checkoutcomponent.cart.Cart;
+import com.filipmorawski.checkoutcomponent.cart.CartDTO;
 import com.filipmorawski.checkoutcomponent.cart.CartProduct;
 import com.filipmorawski.checkoutcomponent.product.Product;
 
@@ -14,14 +14,8 @@ public class CartTest {
 
 	@Test
 	public void whenAddProduct_shouldReturnCartWithSpecificCost() {
-		Product product = new Product();
-		Cart cart = new Cart();
-		
-		product.setName("Headphones");
-		product.setProductId(1L);
-		product.setUnitCost(new BigDecimal(40));
-		product.setDiscountUnits(3);
-		product.setSpecialPrice(new BigDecimal(80));
+		Product product = new Product(1,"Headphones", new BigDecimal(40), 3, new BigDecimal(70));
+		CartDTO cart = new CartDTO();
 		
 		LinkedList<CartProduct> productsList = new LinkedList<CartProduct>();
 		cart.setProductsList(productsList);

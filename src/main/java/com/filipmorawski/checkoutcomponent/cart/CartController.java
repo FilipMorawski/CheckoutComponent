@@ -2,7 +2,6 @@ package com.filipmorawski.checkoutcomponent.cart;
 
 import java.util.List;
 
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,7 +11,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.filipmorawski.checkoutcomponent.discount.UnitsDiscountVisitor;
-import com.filipmorawski.checkoutcomponent.product.Product;
 import com.filipmorawski.checkoutcomponent.product.ProductRepository;
 
 import io.swagger.annotations.Api;
@@ -31,6 +29,9 @@ public class CartController {
 	@Autowired
 	ProductRepository productRepository;
 	
+	@Autowired
+	CartService cartService;
+	
 	@ApiOperation(value="View a list of opened shopping carts", response=List.class)
 	@ApiResponses(value = {
             @ApiResponse(code = 401, message = "You are not authorized to view carts"),
@@ -39,8 +40,8 @@ public class CartController {
     }
     )
 	@GetMapping(path="/carts")
-	public List<Cart> getAll () {
-		return cartRepository.findAll();
+	public List<CartDTO> getAll () {
+		return cartService.getAll();
 	}
 	
 	@ApiOperation(value="Open new shopping cart", response=Cart.class)
@@ -52,8 +53,8 @@ public class CartController {
     }
     )
 	@PostMapping(path="/carts")
-	public Cart createCart() {
-		return cartRepository.save(new Cart());
+	public CartDTO createCart() {
+		return cartService.createCart();
 	}
 	
 	@ApiOperation(value="Add product to existing shopping cart", response=Cart.class)
@@ -65,19 +66,16 @@ public class CartController {
     }
     )
 	@PostMapping(path="/carts/{cartId}/add/{quantity}/{productId}")
-	public ResponseEntity<Cart> addProduct(
+	public ResponseEntity<CartDTO> addProduct(
 			@PathVariable(value="cartId") long cartId, 
 			@PathVariable(value="productId") long productId, 
 			@PathVariable(value="quantity") int quantity) {
 		
-		Cart cart = cartRepository.findOne(cartId);
-		Product product = productRepository.findOne(productId);
-		if(cart == null || product == null) {
+		CartDTO cartDTO = cartService.addProduct(cartId,productId,quantity);
+		if(cartDTO == null) {
 			return ResponseEntity.notFound().build();
 		}
-		cart.addProduct(product, quantity);
-		Cart updatedCart = cartRepository.save(cart);
-		return ResponseEntity.ok(updatedCart);
+		return ResponseEntity.ok(cartDTO);
 	}
 
 	
@@ -90,14 +88,13 @@ public class CartController {
     }
     )
 	@PostMapping(path="/carts/{cartId}/close")
-	public ResponseEntity<Cart> closeCart(
+	public ResponseEntity<CartDTO> closeCart(
 			@PathVariable(value="cartId") long cartId) {
 				
-		Cart cart = cartRepository.findOne(cartId);
+		CartDTO cart = cartService.closeCart(cartId);
 		if(cart == null) {
 			return ResponseEntity.notFound().build();
 		}
-		cartRepository.delete(cartId);
 		new UnitsDiscountVisitor().visitShoppingCart(cart);
 		return ResponseEntity.ok(cart);
 	}	

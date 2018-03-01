@@ -35,11 +35,8 @@ public class ProductControllerTest {
 
 	@Test
 	public void whenGetListOfAllProducts_ShouldReturnProductListOfSize2() throws Exception{
-		Product product = new Product("Headphones", new BigDecimal(40), 3, new BigDecimal(70));
-		Product product2 = new Product("USBDrive", new BigDecimal(10), 2, new BigDecimal(15));
-		
-		product.setProductId(1);
-		product2.setProductId(2);
+		Product product = new Product(1,"Headphones", new BigDecimal(40), 3, new BigDecimal(70));
+		Product product2 = new Product(2,"USBDrive", new BigDecimal(10), 2, new BigDecimal(15));
 		
 		LinkedList<Product> productsRepo = new LinkedList<Product>();
 		productsRepo.add(product);

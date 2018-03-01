@@ -1,8 +1,8 @@
 package com.filipmorawski.checkoutcomponent.discount;
 
-import com.filipmorawski.checkoutcomponent.cart.Cart;
+import com.filipmorawski.checkoutcomponent.cart.CartDTO;
 
 public interface OnlineShopVisitor {
 
-		public void visitShoppingCart(Cart cart);
+		public void visitShoppingCart(CartDTO cart);
 }
