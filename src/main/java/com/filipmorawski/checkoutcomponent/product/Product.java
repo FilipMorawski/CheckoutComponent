@@ -12,12 +12,9 @@ import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.Immutable;
 import org.hibernate.validator.constraints.NotBlank;
 
-import com.filipmorawski.checkoutcomponent.discount.OnlineShopElement;
-import com.filipmorawski.checkoutcomponent.discount.OnlineShopVisitor;
-
 @Entity
 @Immutable
-public class Product implements OnlineShopElement{
+public class Product {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
@@ -71,7 +68,4 @@ public class Product implements OnlineShopElement{
 	public BigDecimal getSpecialPrice() {
 		return specialPrice;
 	}
-
-	@Override
-	public void accept(OnlineShopVisitor visitor) {}
 }

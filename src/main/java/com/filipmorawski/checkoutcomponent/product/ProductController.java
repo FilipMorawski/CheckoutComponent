@@ -15,9 +15,13 @@ import io.swagger.annotations.ApiOperation;
 @Api(description="Getting info about products in store")
 public class ProductController {
 
-	@Autowired
-	ProductRepository productRepository;
+	private ProductRepository productRepository;
 	
+	@Autowired
+	public ProductController(ProductRepository productRepository) {
+		this.productRepository = productRepository;
+	}
+
 	@ApiOperation(value="View a list of available products", response=List.class)
 	@GetMapping(path="/products")
 	public List<Product> getAll () {

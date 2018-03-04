@@ -14,7 +14,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import com.filipmorawski.checkoutcomponent.cart.CartDTO;
-import com.filipmorawski.checkoutcomponent.discount.UnitsDiscountVisitor;
+import com.filipmorawski.checkoutcomponent.discount.BundlePricing;
 import com.filipmorawski.checkoutcomponent.product.Product;
 
 @RunWith(SpringRunner.class)
@@ -39,9 +39,7 @@ public class CloseCartIntegrationTest {
 		responseEntity = restTemplate.postForEntity(firstRequest, null, CartDTO.class);
 		cart = responseEntity.getBody();
 		
-		UnitsDiscountVisitor visitor = new UnitsDiscountVisitor();
-		visitor.visitShoppingCart(cart);
-		BigDecimal costAfterDiscount = cart.getTotalCost();
+		BigDecimal costAfterDiscount = new BundlePricing().calculatePrice(productToAdd, quantityToAdd);
 		
 		String secondRequest = "/api/carts/" + cart.getCartId() +"/close/";
 		responseEntity = restTemplate.postForEntity(secondRequest,null, CartDTO.class);

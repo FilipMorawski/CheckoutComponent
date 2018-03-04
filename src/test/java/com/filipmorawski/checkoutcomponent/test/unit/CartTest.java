@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import com.filipmorawski.checkoutcomponent.cart.CartDTO;
 import com.filipmorawski.checkoutcomponent.cart.CartProduct;
+import com.filipmorawski.checkoutcomponent.discount.BundlePricing;
 import com.filipmorawski.checkoutcomponent.product.Product;
 
 public class CartTest {
@@ -22,7 +23,7 @@ public class CartTest {
 		
 		int quantity = 2;
 		
-		cart.addProduct(new CartProduct(product,quantity));
+		cart.addProduct(new CartProduct(product,quantity), new BundlePricing());
 		
 		assertThat(cart.getTotalCost()).isEqualTo(product.getUnitCost().multiply(new BigDecimal(quantity)));
 	}

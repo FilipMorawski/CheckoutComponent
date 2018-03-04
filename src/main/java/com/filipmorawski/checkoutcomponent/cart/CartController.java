@@ -10,9 +10,6 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.filipmorawski.checkoutcomponent.discount.UnitsDiscountVisitor;
-import com.filipmorawski.checkoutcomponent.product.ProductRepository;
-
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
@@ -23,15 +20,14 @@ import io.swagger.annotations.ApiResponses;
 @Api(description="Operations on shopping carts")
 public class CartController {
 
+	private CartService cartService;
+		
 	@Autowired
-	CartRepository cartRepository;
-	
-	@Autowired
-	ProductRepository productRepository;
-	
-	@Autowired
-	CartService cartService;
-	
+	public CartController(CartService cartService) {
+		this.cartService = cartService;
+	}
+
+
 	@ApiOperation(value="View a list of opened shopping carts", response=List.class)
 	@ApiResponses(value = {
             @ApiResponse(code = 401, message = "You are not authorized to view carts"),
@@ -95,7 +91,6 @@ public class CartController {
 		if(cart == null) {
 			return ResponseEntity.notFound().build();
 		}
-		new UnitsDiscountVisitor().visitShoppingCart(cart);
 		return ResponseEntity.ok(cart);
 	}	
 }

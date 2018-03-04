@@ -25,7 +25,8 @@ import org.springframework.test.web.servlet.MockMvc;
 import com.filipmorawski.checkoutcomponent.cart.CartController;
 import com.filipmorawski.checkoutcomponent.cart.CartDTO;
 import com.filipmorawski.checkoutcomponent.cart.CartProduct;
-import com.filipmorawski.checkoutcomponent.discount.UnitsDiscountVisitor;
+import com.filipmorawski.checkoutcomponent.discount.BundlePricing;
+import com.filipmorawski.checkoutcomponent.discount.PricingPolicy;
 import com.filipmorawski.checkoutcomponent.product.Product;
 
 @RunWith(SpringRunner.class)
@@ -46,6 +47,8 @@ public class CartControllerTest {
 	@Before
 	public void setup() {
 		cart = new CartDTO();
+		LinkedList<CartProduct> productsList = new LinkedList<CartProduct>();
+		cart.setProductsList(productsList);
 		cart.setCartId(1);
 
 		product = new Product(1,"Headphones", new BigDecimal(40), 3, new BigDecimal(70));
@@ -55,12 +58,9 @@ public class CartControllerTest {
 		cp.setId(1);
 		cp.setProduct(product);
 		cp.setQuantity(quantity);
-		cp.setCartedPrice(new BigDecimal(120));
-
-		LinkedList<CartProduct> productsList = new LinkedList<CartProduct>();
 		productsList.add(cp);
-		cart.setProductsList(productsList);
-		cart.setTotalCost(new BigDecimal(120));
+		cp.setCartedPrice(new BigDecimal(70));
+		cart.setTotalCost(new BigDecimal(70));
 	}
 
 	@Test
@@ -101,9 +101,9 @@ public class CartControllerTest {
 				.andExpect(jsonPath("$[0].productsList[0].product.name", is(product.getName())))
 				.andExpect(jsonPath("$[0].productsList[0].product.productId", is(1)))
 				.andExpect(jsonPath("$[0].productsList[0].product.unitCost", is(40)))
-				.andExpect(jsonPath("$[0].productsList[0].cartedPrice", is(120)))
+				.andExpect(jsonPath("$[0].productsList[0].cartedPrice", is(70)))
 				.andExpect(jsonPath("$[0].productsList[0].quantity", is(quantity)))
-				.andExpect(jsonPath("$[0].totalCost", is(120)))
+				.andExpect(jsonPath("$[0].totalCost", is(70)))
 				.andExpect(jsonPath("$[1].cartId", is(2)))
 				.andExpect(jsonPath("$[1].productsList", is(secondCart.getProductsList())))
 				.andExpect(jsonPath("$[1].totalCost", is(0)));
@@ -125,16 +125,14 @@ public class CartControllerTest {
 				.andExpect(jsonPath("$.productsList[0].product.productId", is(1)))
 				.andExpect(jsonPath("$.productsList[0].product.name", is(product.getName())))
 				.andExpect(jsonPath("$.productsList[0].product.unitCost", is(40)))
-				.andExpect(jsonPath("$.productsList[0].cartedPrice", is(120)))
+				.andExpect(jsonPath("$.productsList[0].cartedPrice", is(70)))
 				.andExpect(jsonPath("$.productsList[0].quantity", is(quantity)))
-				.andExpect(jsonPath("$.totalCost", is(120)));
+				.andExpect(jsonPath("$.totalCost", is(70)));
 	}
 
 	@Test
 	public void whenCloseCart_shouldReturnClosedCart() throws Exception {
 
-		UnitsDiscountVisitor visitor = new UnitsDiscountVisitor();
-		visitor.visitShoppingCart(cart);
 		int quantity = cart	.getProductsList()
 							.get(0)
 							.getQuantity();
@@ -148,7 +146,7 @@ public class CartControllerTest {
 				.andExpect(jsonPath("$.productsList[0].product.productId", is(1)))
 				.andExpect(jsonPath("$.productsList[0].product.name", is(product.getName())))
 				.andExpect(jsonPath("$.productsList[0].product.unitCost", is(40)))
-				.andExpect(jsonPath("$.productsList[0].cartedPrice", is(120)))
+				.andExpect(jsonPath("$.productsList[0].cartedPrice", is(70)))
 				.andExpect(jsonPath("$.productsList[0].quantity", is(quantity)))
 				.andExpect(jsonPath("$.totalCost", is(70)));
 
