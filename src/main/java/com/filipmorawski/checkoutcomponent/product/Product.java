@@ -12,6 +12,8 @@ import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.Immutable;
 import org.hibernate.validator.constraints.NotBlank;
 
+import com.google.common.base.Objects;
+
 @Entity
 @Immutable
 public class Product {
@@ -67,5 +69,30 @@ public class Product {
 
 	public BigDecimal getSpecialPrice() {
 		return specialPrice;
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == this) return true;
+		if (!(obj instanceof Product)) {
+			return false;
+		}
+		Product product = (Product) obj;
+		return productId == product.productId &&
+				discountUnits == product.discountUnits &&
+				Objects.equal(name, product.name) &&
+				Objects.equal(specialPrice, product.specialPrice) &&
+				Objects.equal(unitCost, product.unitCost);
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(productId, name, specialPrice, unitCost, discountUnits);
+	}
+
+	@Override
+	public String toString() {
+		return "Product [productId=" + productId + ", name=" + name + ", unitCost=" + unitCost + ", discountUnits="
+				+ discountUnits + ", specialPrice=" + specialPrice + "]";
 	}
 }

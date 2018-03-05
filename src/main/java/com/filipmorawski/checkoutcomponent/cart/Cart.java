@@ -2,6 +2,7 @@ package com.filipmorawski.checkoutcomponent.cart;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Objects;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Entity;
@@ -45,4 +46,27 @@ public class Cart {
 	public void setTotalCost(BigDecimal totalCost) {
 		this.totalCost = totalCost;
 	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == this) return true;
+		if (!(obj instanceof Cart ))  {
+			return false;
+		}
+		Cart cart = (Cart) obj;
+		return cartId == cart.cartId &&
+				Objects.equals(productsList, cart.productsList) &&
+				Objects.equals(totalCost, cart.totalCost);			
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(cartId, productsList, totalCost);
+	}
+
+	@Override
+	public String toString() {
+		return "Cart [cartId=" + cartId + ", productsList=" + productsList + ", totalCost=" + totalCost + "]";
+	}
+	
 }

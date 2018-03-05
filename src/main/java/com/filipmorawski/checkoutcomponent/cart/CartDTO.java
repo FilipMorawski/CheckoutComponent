@@ -2,6 +2,8 @@ package com.filipmorawski.checkoutcomponent.cart;
 
 import java.math.BigDecimal;
 import java.util.List;
+import java.util.Objects;
+
 import com.filipmorawski.checkoutcomponent.discount.PricingPolicy;
 import com.filipmorawski.checkoutcomponent.product.Product;
 
@@ -62,5 +64,28 @@ public class CartDTO {
 	
 	public void addProduct(CartProduct cp, PricingPolicy policy) {
 		addProduct(cp.getProduct(), cp.getQuantity(), policy);
+	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == this) return true;
+		if (!(obj instanceof CartDTO)) {
+			return false;
+		}
+		
+		CartDTO cart = (CartDTO) obj;
+		return cartId == cart.cartId &&
+				Objects.equals(productsList, cart.productsList) &&
+				Objects.equals(totalCost, cart.totalCost);		
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hash(cartId, productsList, totalCost);
+	}
+
+	@Override
+	public String toString() {
+		return "CartDTO [cartId=" + cartId + ", productsList=" + productsList + ", totalCost=" + totalCost + "]";
 	}
 }

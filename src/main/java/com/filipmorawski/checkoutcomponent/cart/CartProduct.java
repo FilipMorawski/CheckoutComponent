@@ -12,6 +12,7 @@ import javax.persistence.Table;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.filipmorawski.checkoutcomponent.product.Product;
+import com.google.common.base.Objects;
 
 import io.swagger.annotations.ApiModelProperty;
 
@@ -76,4 +77,29 @@ public class CartProduct  {
 	public void setCartedPrice(BigDecimal cartedPrice) {
 		this.cartedPrice = cartedPrice;
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if (obj == this) return true;
+		if(!(obj instanceof CartProduct)) {
+			return false;
+		}
+		CartProduct cp = (CartProduct) obj;
+		return id == cp.id &&
+				quantity == cp.quantity &&
+				Objects.equal(cartedPrice, cp.cartedPrice) &&
+				Objects.equal(product, cp.product);
+	}
+	
+	@Override
+	public int hashCode() {
+		return Objects.hashCode(id, quantity, cartedPrice, product);
+	}
+
+	@Override
+	public String toString() {
+		return "CartProduct [id=" + id + ", product=" + product + ", quantity=" + quantity + ", cartedPrice="
+				+ cartedPrice + "]";
+	}
+	
 }
